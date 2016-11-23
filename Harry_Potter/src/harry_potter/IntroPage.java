@@ -16,9 +16,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
  
 /**
-*
-* @author erix7
-*/
+ *
+ * @author ANURAG
+ */
 public class IntroPage extends Application {
  
  /**

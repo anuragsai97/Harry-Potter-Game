@@ -20,9 +20,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
  
 /**
-*
-* @author erix7
-*/
+ *
+ * @author ANURAG
+ */
 public class Harry_Potter extends Application {
  
  /**

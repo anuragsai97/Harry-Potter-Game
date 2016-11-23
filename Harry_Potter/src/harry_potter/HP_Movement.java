@@ -41,11 +41,12 @@ public class HP_Movement extends Application {
         Canvas canvas = new Canvas( 512, 512 );
         root.getChildren().add( canvas );
 
-        ArrayList<String> input = new ArrayList<String>();
+        ArrayList<String> input = new ArrayList<>();
 
         theScene.setOnKeyPressed(
             new EventHandler<KeyEvent>()
             {
+                @Override
                 public void handle(KeyEvent e)
                 {
                     String code = e.getCode().toString();
@@ -57,6 +58,7 @@ public class HP_Movement extends Application {
         theScene.setOnKeyReleased(
             new EventHandler<KeyEvent>()
             {
+                @Override
                 public void handle(KeyEvent e)
                 {
                     String code = e.getCode().toString();
@@ -72,7 +74,7 @@ public class HP_Movement extends Application {
         harry_potter.setPosition(200, 0);
         harry_potter.setImage("/harry_potter/Movement/d1.png");
         
-        ArrayList<Sprite> spellsList = new ArrayList<Sprite>();
+        ArrayList<Sprite> spellsList = new ArrayList<>();
         
         for (int i = 0; i < 15; i++)
         {
@@ -90,6 +92,7 @@ public class HP_Movement extends Application {
 
         new AnimationTimer()
         {
+            @Override
             public void handle(long currentNanoTime)
             {
                 // calculate time since last update.
