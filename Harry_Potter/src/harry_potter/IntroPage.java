@@ -33,9 +33,7 @@ public class IntroPage extends Application {
         StackPane root = new StackPane();
         root.setId("pane");
         Scene scene = new Scene(root, 800, 600);
-        //scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
-        //Canvas canvas = new Canvas( 1366, 768 );
-        //root.getChildren().add( canvas );
+        
         
         
         primaryStage.setScene(scene);

@@ -18,7 +18,9 @@ import javafx.stage.Stage;
  * @author Dell
  */
 import java.util.Scanner;
-public class Training  {
+import java.util.logging.Level;
+import java.util.logging.Logger;
+class Training  {
     
    
     /**
@@ -27,11 +29,7 @@ public class Training  {
     String s;
     Scanner sc=new Scanner(System.in);
     character h= new character();
-    int count;
-    
-         
-    
-    
+    int count;  
     
     Training()
     {
@@ -61,14 +59,16 @@ public class Training  {
     void practice(character h)
 {
     System.out.println("Pick any of the spells:"+h.spells);
-    
+    //HP_Spells p= new HP_Spells();
     while(s!="N")
     System.out.println("Enter any of the spells:");
      s=sc.next();
+     
+     
     
     if(s.equals("Lumos"))
     {
-        // 
+        
     }
     
     if(s.equals("Expelliarmus"))
