@@ -74,10 +74,7 @@ public class Test extends Application {
             });
         
 
-        
-            
-        
-        
+                        
 
                
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -158,15 +155,10 @@ public class Test extends Application {
                 // game logic
                                
                 harry_potter.setVelocity(0,0);
-                
-                
-                
-                
-                if(input.contains("SPACE")){  
-                    harry_potter.setImage(spellcast.getFrame(t));  
+
+                if(input.contains("SPACE")){
+                    harry_potter.setImage("/harry_potter/Spells/Spell.gif");
                 }
-               
-               
                 if (input.contains("LEFT")){
                     harry_potter.setImage(left.getFrame(t));
                     harry_potter.addVelocity(-150,0);
@@ -210,7 +202,6 @@ public class Test extends Application {
                 String pointsText = "Score: " + (100 * score.value);
                 gc.fillText( pointsText, 1300, 36 );
                 gc.strokeText( pointsText, 1300, 36 );
-               
             }
         }.start();
 
