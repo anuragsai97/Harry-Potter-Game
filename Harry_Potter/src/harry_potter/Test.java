@@ -72,7 +72,7 @@ public class Test extends Application implements Runnable{
                 th.start();
                 while(kks_t.size()==0){
                     kks_t = k.getstring();
-                   System.out.println(kks_t);
+                    System.out.println(kks_t);
                 }
                // test.start();
                 //while(kks_t.size()==0){
@@ -189,19 +189,17 @@ public class Test extends Application implements Runnable{
 
                
                  
-                if(!(kks_t.contains(""))){
+                /*if(!(kks_t.contains(""))){
             
-        }
+        }*/
                 
                 
                 
                 
-               if(kks_t.contains("hello"))
-                {
-                          
+                if(kks_t.contains("Wingardium Leviosa")|kks_t.contains("hello"))
+                {                         
                     harry_potter.setImage("/harry_potter/Spells/Spell.gif");
-                    System.out.println("test");
-                          
+                    kks_t.clear();
                 }
                 if (input.contains("LEFT")){
                     harry_potter.setImage(left.getFrame(t));

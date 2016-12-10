@@ -61,7 +61,7 @@ public class KnockKnockServer implements Runnable {
                  listen();
                 inputCompare = inputLine;
              }
-             
+             //kks.clear();
              
              /*
              if (outputLine.equals("stop"))
@@ -101,7 +101,7 @@ public class KnockKnockServer implements Runnable {
         if(!(kks.contains(s))){
         kks.clear();
         kks.add(s);
-                System.out.println("hey"); 
+               // System.out.println("hey"); 
            }
     }
     
