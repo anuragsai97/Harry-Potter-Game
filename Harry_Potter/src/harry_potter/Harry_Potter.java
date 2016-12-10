@@ -1,13 +1,16 @@
+package harry_potter;
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package harry_potter;
+
 
 import java.io.File;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
@@ -17,9 +20,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
  
 /**
-*
-* @author erix7
-*/
+ *
+ * @author ANURAG
+ */
 public class Harry_Potter extends Application {
  
  /**
@@ -37,25 +40,17 @@ public class Harry_Potter extends Application {
     MediaPlayer mediaPlayer = new MediaPlayer(media);
     mediaPlayer.setAutoPlay(true);
     MediaView mediaView = new MediaView(mediaPlayer);
-    //BorderPane borderPane = new BorderPane();
-    //borderPane.setCenter(mediaView);
-    //borderPane.setPrefSize(1366, 700);
-    //borderPane.setCenter(mediaView);
-    //borderPane.setBottom(addToolBar());
      
     StackPane root = new StackPane();
     root.getChildren().add(mediaView);
     mediaView.setFitWidth(1366);
     mediaView.setFitHeight(768);
     theStage.setTitle("Harry Potter");
-    
-    //borderPane.setStyle("-fx-background-color: Black" 1366 700);
     Scene scene = new Scene(root, 800, 600);
     
     scene.setFill(Color.rgb(0, 0, 0));
-    
-    theStage.setScene(scene);
-    theStage.show();
+   
+     theStage.setScene(scene);
+     theStage.show();
  }
- 
 }
