@@ -18,13 +18,19 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import java.util.Scanner;
 
 /**
  *
  * @author ANURAG
  */
-public class Test extends Application {
-    
+public class Test extends Application implements Runnable{
+    ArrayList<String> kks_t = new ArrayList<>();
+    Scanner sc=new Scanner(System.in);
+    KnockKnockServer k=new KnockKnockServer();
+   // Test t=new Test();
+   // Thread test = new Thread(t);
+    //Training tr=new Training();
      public static void main(String[] args) 
     {
         launch(args);
@@ -33,6 +39,7 @@ public class Test extends Application {
     @Override
     public void start(Stage theStage) 
     {
+        
         theStage.setTitle( "Harry Potter" );
 
         Group root = new Group();
@@ -59,6 +66,27 @@ public class Test extends Application {
                     }
                 
             });
+        
+        
+                Thread th=new Thread(k);
+                th.start();
+                while(kks_t.size()==0){
+                    kks_t = k.getstring();
+                   System.out.println(kks_t);
+                }
+               // test.start();
+                //while(kks_t.size()==0){
+                //for(int i=0;i<2;i++){
+                /*if(k.getstring().size()!=0){
+                    
+                    System.out.println(k.getstring());
+                    kks_t = k.getstring();
+                  // System.out.println(kks_t);
+                }
+                */
+                
+                
+        
 
         theScene.setOnKeyReleased(
             new EventHandler<KeyEvent>()
@@ -143,6 +171,9 @@ public class Test extends Application {
         spellcast.duration = 0.100;
         
         final long startNanoTime = System.nanoTime();
+        
+        
+        
         new AnimationTimer()
         {
             @Override
@@ -156,8 +187,21 @@ public class Test extends Application {
                                
                 harry_potter.setVelocity(0,0);
 
-                if(input.contains("SPACE")){
+               
+                 
+                if(!(kks_t.contains(""))){
+            
+        }
+                
+                
+                
+                
+               if(kks_t.contains("hello"))
+                {
+                          
                     harry_potter.setImage("/harry_potter/Spells/Spell.gif");
+                    System.out.println("test");
+                          
                 }
                 if (input.contains("LEFT")){
                     harry_potter.setImage(left.getFrame(t));
@@ -204,7 +248,20 @@ public class Test extends Application {
                 gc.strokeText( pointsText, 1300, 36 );
             }
         }.start();
+        
+         
+        
+        
 
         theStage.show();
-    }    
+    } 
+
+
+    @Override
+    public void run() {
+        while(kks_t.size()==0){
+                    kks_t = k.getstring();
+                   System.out.println(kks_t);
+                }
+    }
 }

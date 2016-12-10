@@ -5,33 +5,73 @@
  */
 package harry_potter;
 
+import java.util.ArrayList;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import static javafx.application.Application.launch;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-/**
- *
- * @author Dell
- */
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-class Training  {
+public class Training  {
     
    
     /**
      * @param args the command line arguments
      */
-    String s;
+    
+    
+   // Test t=new Test();
+    
+    
+ 
+ /**
+  * @param args the command line arguments
+  */
+     String s;
     Scanner sc=new Scanner(System.in);
     character h= new character();
-    int count;  
+    int count=0;
+    int k=0;
+ public static void main(String[] args) {
+     launch(args);
+ }
+ 
+// @Override
+    public void start(Stage primaryStage) {
+        /*StackPane root = new StackPane();
+        root.setId("pane");
+        Scene scene = new Scene(root, 800, 600);
+        
+        
+        
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        */
+    }
+
     
-    Training()
+    /*public static void main(String[] args) 
+    {
+        launch(args);
+        
+    }
+    @Override
+    public void start(Stage theStage)  {
+        
+        theStage.setTitle( "Harry Potter" );
+
+        Group root = new Group();
+        Scene theScene = new Scene( root,800, 600 );
+        theStage.setScene( theScene );
+
+        Canvas canvas = new Canvas( 1366, 768 );
+        root.getChildren().add( canvas ); 
+        theStage.show();
+    }*/
+    
+    
+    
+    void Training1()
     {
          tlevel1 t=new tlevel1(h);
         if(count==0)
@@ -56,6 +96,8 @@ class Training  {
     }
     
     
+    
+    
     void practice(character h)
 {
     System.out.println("Pick any of the spells:"+h.spells);
@@ -68,7 +110,7 @@ class Training  {
     
     if(s.equals("Lumos"))
     {
-        
+       
     }
     
     if(s.equals("Expelliarmus"))
@@ -116,6 +158,7 @@ class Training  {
      }
      
 }
+
     
     
     
