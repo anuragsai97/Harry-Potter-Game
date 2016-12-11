@@ -30,11 +30,11 @@ public class character{
         long id;
         int health;
         int specialpower;
-        ArrayList<spell> spells;
+        ArrayList<spell_test> spells;
         
         void spelladd(String se,int xp)
         {
-            spell s=new spell(se,xp);
+            spell_test s=new spell_test(se,xp);
             spells.add(s);
         }
         

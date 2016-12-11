@@ -33,13 +33,15 @@ public class Test extends Application implements Runnable{
     //Training tr=new Training();
      public static void main(String[] args) 
     {
+        //IntroVideo.launch(args);
         launch(args);
     }
 
     @Override
     public void start(Stage theStage) 
     {
-        
+       
+
         theStage.setTitle( "Harry Potter" );
 
         Group root = new Group();
@@ -68,7 +70,7 @@ public class Test extends Application implements Runnable{
             });
         
         
-                Thread th=new Thread(k);
+                /*Thread th=new Thread(k);
                 th.start();
                 while(kks_t.size()==0){
                     kks_t = k.getstring();
@@ -100,24 +102,17 @@ public class Test extends Application implements Runnable{
                     
                 }
             });
-        
-
-                        
-
                
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
         
         Sprite harry_potter = new Sprite();
+        Sprite spell = new Sprite();
         
         harry_potter.setPosition(200, 0);
         harry_potter.setImage("/harry_potter/Movement/d1.png");
         
-        ArrayList<Sprite> spellsList = new ArrayList<>();
-        
-
-        
-        
+        ArrayList<Sprite> spellsList = new ArrayList<>();       
         
         for (int i = 0; i < 20; i++)
         {
@@ -185,41 +180,75 @@ public class Test extends Application implements Runnable{
                 double t = (currentNanoTime - startNanoTime) / 1000000000.0;
                 // game logic
                                
-                harry_potter.setVelocity(0,0);
-
-               
-                 
-                /*if(!(kks_t.contains(""))){
-            
-        }*/
-                
-                
-                
+                harry_potter.setVelocity(0,0);                
                 
                 if(kks_t.contains("Wingardium Leviosa")|kks_t.contains("hello"))
-                {                         
+                { 
+                    
+                    if(in.get(in.size()-1)=="DOWN"){
+                        harry_potter.setImage("/harry_potter/Movement/d1.png");
+                    }
+                    if(in.get(in.size()-1)=="UP"){
+                        harry_potter.setImage("/harry_potter/Movement/u1.png");
+                    }
+                    if(in.get(in.size()-1)=="LEFT"){                      
+                        harry_potter.setImage("/harry_potter/Spells/Spell.gif");
+                        kks_t.clear();
+                    } 
+                    if(in.get(in.size()-1)=="RIGHT"){
+                        harry_potter.setImage("/harry_potter/Spells/Spell_flip.gif");
+                        kks_t.clear();
+                    }
+                    
+                }
+                
+                if(kks_t.contains("Stupefy")|kks_t.contains("hey")|kks_t.contains("stupefy")){
+                    spell.setPosition(harry_potter.getXPosition()-10, harry_potter.getYPosition()-10);
                     harry_potter.setImage("/harry_potter/Spells/Spell.gif");
+                    spell.setImage("/harry_potter/Spells/Stupefy.gif");
+                    spell.setVelocity(-150, 0);
+                    //for(double d=harry_potter.getXPosition(); d>=0; d--)
+                   // {
+                   //     Thread sp = new Thread();
+                   // spell.setPosition(d, harry_potter.getYPosition()-10);
+                    //spell.setVelocity(d, 0);
+                    //}
                     kks_t.clear();
                 }
+                
                 if (input.contains("LEFT")){
-                    harry_potter.setImage(left.getFrame(t));
-                    harry_potter.addVelocity(-150,0);
+                    in.add("LEFT");
+                    //System.out.println(harry_potter.getXPosition());
+                    if(((harry_potter.getXPosition()>=10))){
+                        harry_potter.setImage(left.getFrame(t));
+                        harry_potter.addVelocity(-150,0);
+                    }
+                    
                 }   
                 if (input.contains("RIGHT")){
-                    harry_potter.setImage(right.getFrame(t));
-                    harry_potter.addVelocity(150,0);
+                    in.add("RIGHT");
+                    if(((harry_potter.getXPosition()<=1200))){
+                        harry_potter.setImage(right.getFrame(t));
+                        harry_potter.addVelocity(150,0);
+                    }
                 }
                 if (input.contains("UP")){
-                    harry_potter.setImage(up.getFrame(t));
-                     harry_potter.addVelocity(0,-150);
+                    in.add("UP");
+                    if(((harry_potter.getYPosition()>=10))){
+                        harry_potter.setImage(up.getFrame(t));
+                        harry_potter.addVelocity(0,-150);
+                    }
                 }
                 if (input.contains("DOWN")){
-                    harry_potter.setImage(down.getFrame(t));
-                   harry_potter.addVelocity(0,150);
+                    in.add("DOWN");
+                    if(((harry_potter.getYPosition()<=690))){
+                        harry_potter.setImage(down.getFrame(t));
+                        harry_potter.addVelocity(0,150);
+                    }
                 }
                     
                 harry_potter.update(elapsedTime);
-                
+                spell.update(elapsedTime);
                 // collision detection
                 
                 Iterator<Sprite> spellsIter = spellsList.iterator();
@@ -237,7 +266,7 @@ public class Test extends Application implements Runnable{
                 
                 gc.clearRect(0, 0, 1366,768);
                 harry_potter.render( gc );
-                
+                spell.render( gc );
                 for (Sprite spells : spellsList )
                     spells.render( gc );
                 
@@ -246,14 +275,9 @@ public class Test extends Application implements Runnable{
                 gc.strokeText( pointsText, 1300, 36 );
             }
         }.start();
-        
-         
-        
-        
 
         theStage.show();
     } 
-
 
     @Override
     public void run() {

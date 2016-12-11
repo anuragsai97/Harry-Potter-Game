@@ -45,6 +45,14 @@ public class Sprite
         positionX = x;
         positionY = y;
     }
+    
+    public double getXPosition(){
+        return positionX;
+    }
+    
+    public double getYPosition(){
+        return positionY;
+    }
 
     public void setVelocity(double x, double y)
     {
@@ -66,6 +74,7 @@ public class Sprite
 
     public void render(GraphicsContext gc)
     {
+       
         gc.drawImage( image, positionX, positionY );
     }
 
@@ -78,6 +87,7 @@ public class Sprite
     {
         return s.getBoundary().intersects( this.getBoundary() );
     }
+    
     
     public String toString()
     {

@@ -24,11 +24,20 @@ import javafx.stage.Stage;
  */
 public class IntroVideo extends Application {
  
+    //static String[] args1;
  /**
   * @param args the command line arguments
   */
- public static void main(String[] args) {
+ 
+    /**
+     *
+     * @param args the command line arguments
+     * @return
+     */
+    public static void main(String[] args) {
+//     args1=args;
      launch(args);
+     //return 0;
  }
  
  @Override

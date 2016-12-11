@@ -43,7 +43,7 @@ public class tlevel2{
   }
     void spellchecker()
     {
-        /// Display the spell names for this level
+        /// Display the spell_test names for this level
         
         
     for(i=0;i<4;i++)
@@ -102,7 +102,7 @@ public class tlevel2{
     upgrade();
     }
 
-    void spellquiz()      // spell quiz must be wriiten
+    void spellquiz()      // spell_test quiz must be wriiten
     {
         spellchecker();
     }

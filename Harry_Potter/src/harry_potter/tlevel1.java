@@ -45,7 +45,7 @@ public class tlevel1  {
   }
     void spellchecker()
     {
-        /// Display the spell names for this level
+        /// Display the spell_test names for this level
 
        /*  Socket MyClient;
     try {
