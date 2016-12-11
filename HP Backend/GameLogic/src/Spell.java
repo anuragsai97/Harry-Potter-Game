@@ -4,7 +4,6 @@ public class Spell {
 	int damage;
 	int magic;
 	String name;
-	int level;
 	
 	static ArrayList<ArrayList<Spell>> spells = new ArrayList<>();
 	
@@ -24,14 +23,14 @@ public class Spell {
 		final ArrayList<Spell> spellsLevel2 = new ArrayList<>();
 		
 		//level 0 spells
-		spellsLevel0.add(new Spell("spell1", 20, 25, 0));
-		spellsLevel0.add(new Spell("spell2", 25, 25, 0));
+		spellsLevel0.add(new Spell("spell1", 10, 10));
+		spellsLevel0.add(new Spell("spell2", 15, 15));
 		//level 1 spells
-		spellsLevel1.add(new Spell("spell3", 30, 30, 1));
-		spellsLevel1.add(new Spell("spell4", 35, 35, 1));
+		spellsLevel1.add(new Spell("spell3", 20, 20));
+		spellsLevel1.add(new Spell("spell4", 25, 25));
 		//level 2 spells
-		spellsLevel2.add(new Spell("spell5", 40, 40, 2));
-		spellsLevel2.add(new Spell("spell6", 45, 45, 2));
+		spellsLevel2.add(new Spell("spell5", 20, 20));
+		spellsLevel2.add(new Spell("spell6", 25, 25));
 		
 		//add to list
 		spells.add(spellsLevel0);
@@ -39,11 +38,10 @@ public class Spell {
 		spells.add(spellsLevel2);
 	}
 	
-	public Spell(String name, int damage, int magic, int level){
+	public Spell(String name, int damage, int magic){
 		this.damage = damage;
 		this.magic = magic;
 		this.name = name;
-		this.level = level;
 	}
 	
 	public static Spell getSpell(String s){
