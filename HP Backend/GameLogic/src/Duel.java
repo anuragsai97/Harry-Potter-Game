@@ -15,17 +15,32 @@ public class Duel {
 		CounterSpell counterSpell;
 		
 		while(gameOn(duel)){
-			System.out.println("Your health: " + duel.player.getCurrentHealth());
-			System.out.println("Your magic: " + duel.player.getCurrentMagic());
-			System.out.println("Opponent health: " + duel.bot.health);
+			//display stats
+			displayStats(duel);
+			//
+			
+			//players turn
 			spell = duel.player.performSpell();
-			System.out.println(spell.magic + spell.name);
-			//counterSpell = duel.bot.performCounterSpell();
-			//if(counterSpell.counters.equals(spell)){
-				
-			//}
-			//spell = duel.bot.performSpell();
-			//counterSpell = duel.player.performCounterSpell();
+			if(!duel.bot.canCounter(spell)){
+				duel.bot.health-=spell.damage;
+			}
+			
+			//display stats
+			displayStats(duel);
+			//
+			
+			//opponents turn
+			spell = duel.bot.performSpell();
+			System.out.println("Opponenet performed " + spell.name);
+			System.out.println("Quick! Counter the Spell");
+			counterSpell = duel.player.performCounterSpell();
+			if(counterSpell.counters.name.equals(spell.name)){
+				System.out.println("You countered it :)");
+			}
+			else{
+				duel.player.takesDamage(spell.damage);
+			}
+			duel.player.turnComplete();
 		}
 		
 		if(duel.player.getCurrentHealth()!=0){
@@ -35,6 +50,12 @@ public class Duel {
 			System.out.println("You loose");
 	}
 	
+	private static void displayStats(Duel duel) {
+		System.out.println("Your health: " + duel.player.getCurrentHealth());
+		System.out.println("Your magic: " + duel.player.getCurrentMagic());
+		System.out.println("Opponent health: " + duel.bot.health + "\n");
+	}
+
 	public static boolean gameOn(Duel d){
 		if(d.player.getCurrentHealth()!=0 && d.bot.health!=0)
 			return true;
