@@ -13,7 +13,7 @@ public class Player {
 	
 	public Player(){
 		this.setMaxHealth(100);
-		this.setMaxMagic(100);
+		this.setMaxMagic(200);
 		this.setCurrentHealth(100);
 		this.setCurrentMagic(100);
 	}
@@ -92,5 +92,9 @@ public class Player {
 		counterSpell = CounterSpell.getSpell(spellText);
 		return counterSpell;
 		
+	}
+	
+	public void turnComplete(){
+		currentMagic+=20;
 	}
 }

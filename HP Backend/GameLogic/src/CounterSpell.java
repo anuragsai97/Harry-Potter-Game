@@ -5,6 +5,7 @@ public class CounterSpell {
 	public Spell counters;
 	public int magic;
 	
+	
 	//static ArrayList<CounterSpell> counterSpells = new ArrayList<>();
 	static ArrayList<CounterSpell> counterSpells = new ArrayList<>();
 	
