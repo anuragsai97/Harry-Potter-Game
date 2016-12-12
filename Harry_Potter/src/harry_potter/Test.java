@@ -19,18 +19,36 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import java.util.Scanner;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 /**
  *
  * @author ANURAG
  */
 public class Test extends Application implements Runnable{
+    
+    user pl;
+    
+    /*Test(Player p)
+    {
+        this.p=p;
+        
+        p.getName();
+    }*/
+    
+    int count=0;
+    ArrayList<String> d;
+    tlevel1 t=new tlevel1();
     ArrayList<String> kks_t = new ArrayList<>();
     Scanner sc=new Scanner(System.in);
     KnockKnockServer k=new KnockKnockServer();
    // Test t=new Test();
    // Thread test = new Thread(t);
     //Training tr=new Training();
+    int i=0;
+    String s;
      public static void main(String[] args) 
     {
         //IntroVideo.launch(args);
@@ -70,23 +88,22 @@ public class Test extends Application implements Runnable{
             });
         
         
-                /*Thread th=new Thread(k);
+                Thread th=new Thread(k);
                 th.start();
                 while(kks_t.size()==0){
                     kks_t = k.getstring();
-                    System.out.println(kks_t);
+                   // System.out.println(kks_t);
                 }
                // test.start();
                 //while(kks_t.size()==0){
                 //for(int i=0;i<2;i++){
-                /*if(k.getstring().size()!=0){
+               /* if(k.getstring().size()!=0){
                     
                     System.out.println(k.getstring());
                     kks_t = k.getstring();
                   // System.out.println(kks_t);
                 }
-                */
-                
+              //  */
                 
                 
         
@@ -109,11 +126,33 @@ public class Test extends Application implements Runnable{
         
         Sprite harry_potter = new Sprite();
         Sprite spell = new Sprite();
+        Sprite text=new Sprite();
+        Sprite po=new Sprite();
+        
+       // po.setPosition(1000, 0);
+        Sprite dumbledore=new Sprite();
+        Sprite hagrid=new Sprite();
+        Sprite balloon=new Sprite();
+        
+       
+        
+        hagrid.setPosition(0,300);
+        balloon.setImage("/harry_potter/Introimages/textbaloonL1.png");
+        
+        text.setPosition(1100,0);
+        dumbledore.setPosition(1000, 150);
+        balloon.setPosition(20, 120);
+         hagrid.setImage("/harry_potter/Introimages/Hagridsprite1.png");
+        dumbledore.setImage("/harry_potter/Introimages/Dumbledore.jpg");
+         text.setImage("/harry_potter/Introimages/Text_Balloon.png");
         
         harry_potter.setPosition(200, 0);
         harry_potter.setImage("/harry_potter/Movement/d1.png");
+       
         
-        ArrayList<Sprite> spellsList = new ArrayList<>();       
+        ArrayList<Sprite> spellsList = new ArrayList<>();   
+        
+        
         
         for (int i = 0; i < 20; i++)
         {
@@ -181,9 +220,12 @@ public class Test extends Application implements Runnable{
                 double t = (currentNanoTime - startNanoTime) / 1000000000.0;
                 // game logic
                                
-                harry_potter.setVelocity(0,0);                
+                harry_potter.setVelocity(0,0);      
+               // input.contains("SPACE");
+                //|
+               // 
                 
-                if(kks_t.contains("Wingardium Leviosa")|kks_t.contains("hello"))
+                if((kks_t.contains("Wingardium Leviosa")|kks_t.contains("stupefy")||kks_t.contains("reducto")))
                 { 
                     
                     if(in.get(in.size()-1)=="DOWN"){
@@ -194,20 +236,32 @@ public class Test extends Application implements Runnable{
                     }
                     if(in.get(in.size()-1)=="LEFT"){                      
                         harry_potter.setImage("/harry_potter/Spells/Spell.gif");
-                        kks_t.clear();
+                        
+                         if(kks_t.contains("Stupefy")|kks_t.contains("confringo")|kks_t.contains("reducto")){
+                    spell.setPosition(harry_potter.getXPosition()-10, harry_potter.getYPosition()-10);
+                    harry_potter.setImage("/harry_potter/Spells/Spell_flip.gif");
+                   spell.setImage("/harry_potter/Spells/Stupefy.gif");
+                    spell.setVelocity(-150, 0);
+                      // s=kks_t.get(0);
+                       kks_t.clear();
+                        i=i+1;
+                         //System.out.println("hi");
+                if(i==3)
+               {
+                //System.out.println("heyya");
+                   //text balloon popup
+              }
+                         }
+                       //count(s);
                     } 
                     if(in.get(in.size()-1)=="RIGHT"){
                         harry_potter.setImage("/harry_potter/Spells/Spell_flip.gif");
-                        kks_t.clear();
-                    }
-                    
-                }
-                
-                if(kks_t.contains("Stupefy")|kks_t.contains("hey")|kks_t.contains("stupefy")){
+                        
+                        if(kks_t.contains("Stupefy")|kks_t.contains("confringo")|kks_t.contains("reducto")){
                     spell.setPosition(harry_potter.getXPosition()-10, harry_potter.getYPosition()-10);
-                    harry_potter.setImage("/harry_potter/Spells/Spell.gif");
-                    spell.setImage("/harry_potter/Spells/Stupefy.gif");
-                    spell.setVelocity(-150, 0);
+                    harry_potter.setImage("/harry_potter/Spells/Spell_flip.gif");
+                   spell.setImage("/harry_potter/Spells/Stupefy.gif");
+                    spell.setVelocity(150, 0);
                     //for(double d=harry_potter.getXPosition(); d>=0; d--)
                    // {
                    //     Thread sp = new Thread();
@@ -216,6 +270,25 @@ public class Test extends Application implements Runnable{
                     //}
                     kks_t.clear();
                 }
+                }
+                       // s=kks_t.get(0);
+                        kks_t.clear();
+                        //count(s);
+                         i=i+1;
+                         System.out.println("hi");
+                if(i==3)
+               {
+                //System.out.println("heyya");
+              }
+                        
+                        
+                    }
+                    
+                
+                
+                
+                
+               
                 
                 if (input.contains("LEFT")){
                     in.add("LEFT");
@@ -228,7 +301,7 @@ public class Test extends Application implements Runnable{
                 }   
                 if (input.contains("RIGHT")){
                     in.add("RIGHT");
-                    if(((harry_potter.getXPosition()<=1200))){
+                    if(((harry_potter.getXPosition()<=(int)950))){
                         harry_potter.setImage(right.getFrame(t));
                         harry_potter.addVelocity(150,0);
                     }
@@ -265,20 +338,61 @@ public class Test extends Application implements Runnable{
                 
                 // render
                 
+                
                 gc.clearRect(0, 0, 1366,768);
                 harry_potter.render( gc );
+                dumbledore.render(gc);
+                hagrid.render(gc);
+                 //text.render(gc);
                 spell.render( gc );
+                 
                 for (Sprite spells : spellsList )
                     spells.render( gc );
                 
                 String pointsText = "Score: " + (100 * score.value);
                 gc.fillText( pointsText, 1300, 36 );
                 gc.strokeText( pointsText, 1300, 36 );
+                
+                if(harry_potter.intersects(dumbledore))
+                        text.render(gc);
+                
+                if(harry_potter.getXPosition()==210)
+                {
+                    System.out.println("hey");
+                }
+                
+                if(harry_potter.intersects(hagrid))
+                {
+                    balloon.render(gc);
+                }
             }
         }.start();
 
         theStage.show();
-    } 
+       // while(harry_potter.getXPosition()!=1130)
+         //       {
+                    
+                        // text.setImage("/harry_potter/Introimages/Text_Balloon.png");
+                        //System.out.println("hi");
+                   
+           //     }
+           
+    }
+                
+    
+    public void setdetails(user p)
+    {
+        //count=count+1;
+      pl=p;
+        //System.out.println("hi");
+        System.out.println(p.name);
+    }
+    
+    public user getdetails()
+    {
+       // return pl;
+        return pl;
+    }
 
     @Override
     public void run() {
