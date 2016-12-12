@@ -12,14 +12,18 @@ public class ComputerBot{
 	
 	
 	public int randomGenerator(){
-		int x = (int)(Math.random()*level*2);
+		// int x=(int)(Math.random()*5);
+                int x = (int)(Math.random()*level*2);
 		if(x>2)
 			return 2;
 		return x;
 	}
 	
 	public int randomGenerator(Spell s){
-		int x = (int)(Math.random()*level*(2-s.level));
+		//int x = (int)(Math.random()*(level*(2-s.level)));
+                //int x=(int)(Math.random()*5);
+                //int x=5;
+                    int x=(int)(Math.random()*3);
 		if(x>2)
 			return 2;
 		return x;
@@ -57,6 +61,7 @@ public class ComputerBot{
 			CounterSpell cs2;
 			while(true){
 				cs2 = CounterSpell.counterSpells.get((int)(Math.random()*CounterSpell.counterSpells.size()));
+                                //cs2 = CounterSpell.counterSpells.get((int)(Math.random()*6));
 				if(cs2.name.equals(cs.name)){
 					continue;
 				}

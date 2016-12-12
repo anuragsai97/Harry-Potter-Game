@@ -5,6 +5,7 @@
  */
 package harry_potter;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javafx.animation.AnimationTimer;
@@ -15,6 +16,9 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.shape.ArcType;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -28,7 +32,8 @@ public class Duel_final extends Application implements Runnable {
     //ArrayList<String> kks = new ArrayList<>();
     Scanner sc=new Scanner(System.in);
     KnockKnockServer k=new KnockKnockServer();
-    String pspell,bspell;
+    String pspell;
+    String bspell="hello";
      Duel duel = new Duel(new Player(), new ComputerBot(100, 1));
 		Spell spell; 
 		CounterSpell counterSpell;
@@ -56,7 +61,7 @@ public class Duel_final extends Application implements Runnable {
     public void spell_setter(String spell){
         if(spell.equals("reducto"))
             spell2.setImage("/harry_potter/Spells/reducto.gif");
-        if(spell.equals("confringo"))
+        if(spell.equals("sectumsempra"))
             spell2.setImage("/harry_potter/Spells/confirgo.gif");
         if(spell.equals("crucio"))
             spell2.setImage("/harry_potter/Spells/crucio.gif");
@@ -76,11 +81,11 @@ public class Duel_final extends Application implements Runnable {
             spell1.setImage("/harry_potter/Spells/confirgo.gif");
         if(spell.equals("crucio"))
             spell1.setImage("/harry_potter/Spells/crucio.gif");
-        if(spell.equals("stupefy"))
+        if(spell.equals("stupefy")||spell.equals("stupefied"))
             spell1.setImage("/harry_potter/Spells/Stupefy.gif");
         if(spell.equals("expelliarmus"))
             spell1.setImage("/harry_potter/Spells/expelliarmus.gif");
-        if(spell.equals("diffindo"))
+        if(spell.equals("diffindo")||spell.equals("Defender")||spell.equals("defendo"))
             spell1.setImage("/harry_potter/Spells/diffindo.gif");
         
     }
@@ -96,9 +101,25 @@ public class Duel_final extends Application implements Runnable {
         Scene theScene = new Scene( root,1366, 768 );
         Canvas canvas = new Canvas( 1366, 768 );
         root.getChildren().add( canvas );
-        theStage.setTitle("Hello World!");
+        theStage.setTitle("Harry Potter Game");
         theStage.setScene(theScene);
         
+        Media media = new Media(new File("C:\\Users\\PDN SRNIVAS\\Documents\\NetBeansProjects\\Harry_Potter\\src\\harry_potter\\Harry Potter Theme Song.mp3").toURI().toString());
+        Media media1 =new Media(new File("C:\\Users\\PDN SRNIVAS\\Documents\\NetBeansProjects\\Harry_Potter\\src\\harry_potter\\Spell sounds\\crucio.mp3").toURI().toString());
+        Media media2 =new Media(new File("C:\\Users\\PDN SRNIVAS\\Documents\\NetBeansProjects\\Harry_Potter\\src\\harry_potter\\Spell sounds\\diffindo.mp3").toURI().toString());
+        Media media3 =new Media(new File("C:\\Users\\PDN SRNIVAS\\Documents\\NetBeansProjects\\Harry_Potter\\src\\harry_potter\\Spell sounds\\expelliarmus.mp3").toURI().toString());
+        Media media4 =new Media(new File("C:\\Users\\PDN SRNIVAS\\Documents\\NetBeansProjects\\Harry_Potter\\src\\harry_potter\\Spell sounds\\reducto.mp3").toURI().toString());
+        Media media5 =new Media(new File("C:\\Users\\PDN SRNIVAS\\Documents\\NetBeansProjects\\Harry_Potter\\src\\harry_potter\\Spell sounds\\sectumsempra.mp3").toURI().toString());
+        Media media6 =new Media(new File("C:\\Users\\PDN SRNIVAS\\Documents\\NetBeansProjects\\Harry_Potter\\src\\harry_potter\\Spell sounds\\stupefy.mp3").toURI().toString());  
+        
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        MediaPlayer mediaPlayer1 = new MediaPlayer(media1);
+        MediaPlayer mediaPlayer2 = new MediaPlayer(media2);
+        MediaPlayer mediaPlayer3 = new MediaPlayer(media3);
+        MediaPlayer mediaPlayer4 = new MediaPlayer(media4);
+        MediaPlayer mediaPlayer5 = new MediaPlayer(media5);
+        MediaPlayer mediaPlayer6 = new MediaPlayer(media6);
+                //mediaPlayer.setAutoPlay(true);
         
         ArrayList<String> input = new ArrayList<String>();
          ArrayList<String> in = new ArrayList<String>();
@@ -124,13 +145,13 @@ public class Duel_final extends Application implements Runnable {
                 }
             });
         
-                /*Thread th=new Thread(k);
+                Thread th=new Thread(k);
                 th.start();
                 while(kks_t.size()==0){
                     kks_t = k.getstring();
                     //System.out.println(kks_t);
-                }*/
-                kks_t.add("diffindo");
+                }
+                //kks_t.add("crucio");
         
         //in.add(kks_t);
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -171,7 +192,7 @@ public class Duel_final extends Application implements Runnable {
 			                        
 			
 			//if(spell.equals(""))
-                        if((kks_t.contains("reducto"))||(kks_t.contains("crucio"))||(kks_t.contains("diffindo"))||(kks_t.contains("expelliarmus"))||(kks_t.contains("stupefy"))||kks_t.contains("confringo")){
+                        if((kks_t.contains("reducto"))||(kks_t.contains("crucio"))||(kks_t.contains("diffindo"))||(kks_t.contains("expelliarmus"))||(kks_t.contains("stupefy"))||kks_t.contains("stupefied")||kks_t.contains("confringo")||kks_t.contains("Defender")||kks_t.contains("defendo")){
                             //players turn
                             spell = duel.player.performSpell(kks_t.get(0));
                             pspell=kks_t.get(0);
@@ -191,20 +212,41 @@ public class Duel_final extends Application implements Runnable {
                             
                             spell1.setPosition(s1.getXPosition()-10, s1.getYPosition()-10);
                             player_spell_setter(spell.name);
-                            s1.setImage("/harry_potter/Spells/PersonFacingRight.gif");
+                                s1.setImage("/harry_potter/Spells/PersonFacingRight.gif");
                             spell1.setVelocity(250, 0);
                             kks_t.clear();
                             spell2.setPosition(s2.getXPosition()-10, s2.getYPosition()-10);
                             //s2.setImage("/harry_potter/Spells/PersonFacingLeft.gif");
                             spell_setter(counterSpell.name);
-                            s2.setImage("/harry_potter/Spells/PersonFacingLeft.gif");
+                                s2.setImage("/harry_potter/Spells/PersonFacingLeft.gif");
+                            if(bspell.equals("crucio")){
+                                mediaPlayer1.play();
+                                
+                            }
+                            if(bspell.equals("diffindo")){
+                                mediaPlayer2.play();
+                            }
+                            if(bspell.equals("expelliarmus")){
+                                mediaPlayer3.play();
+                            }
+                            if(bspell.equals("reducto")){
+                                   mediaPlayer4.play();
+                            }
+                            if(bspell.equals("sectumsempra")){
+                                mediaPlayer5.play();
+                            }
+                            if(bspell.equals("stupefy")){
+                                mediaPlayer6.play();
+                            }
+                            
                             //spell2.setImage("/harry_potter/Spells/sectum sempra.gif");
                             spell2.setVelocity(-250, 0);
                         }
-			//display stats
+			
+                        //display stats
 			//displayStats(duel);
 			//
-			                       
+			        
                         
                        /*
 			//opponents turn
@@ -221,58 +263,6 @@ public class Duel_final extends Application implements Runnable {
 			duel.player.turnComplete();
 		//}
 		
-                
-                //if(kks_t.get(0).equals(cb.bot_spell())){
-                /*if((kks_t.contains("reducto"))||(kks_t.contains("crucio"))||(kks_t.contains("diffindo"))||(kks_t.contains("expelliarmus")||kks_t.contains("stupefy"))){
-                    spell1.setPosition(s1.getXPosition()-10, s1.getYPosition()-10);
-                    //in.add(STYLESHEET_MODENA)
-                    s1.setImage("/harry_potter/Spells/PersonFacingRight.gif");
-                    spell1.setImage("/harry_potter/Spells/"+kks_t.get(0)+".gif");
-                    spell1.setVelocity(150, 0);
-                    in.add(kks_t.get(0));
-                    
-                    in.add(kks_t.get(0));
-                    kks_t.clear();
-                    
-                    spell2.setPosition(s2.getXPosition()-10, s2.getYPosition()-10);
-                    s2.setImage("/harry_potter/Spells/PersonFacingLeft.gif");
-                    //spell_setter();
-                    //spell2.setImage("/harry_potter/Spells/sectum sempra.gif");
-                    spell2.setVelocity(-150, 0);
-                }*/
-                
-                
-		/*if(duel.player.getCurrentHealth()!=0){
-			System.out.println("You win");
-		}
-		else
-			System.out.println("You loose");
-                
-                */
-                /*
-                spell = duel.player.performSpell(kks_t.get(0));
-                if(!duel.bot.canCounter(spell)){
-                    duel.bot.health-=spell.damage;
-		}
-			*/
-                
-                
-                
-                
-                /*if (input.contains("SPACE")){
-                    in.add("SPACE");
-                    spell1.setPosition(s1.getXPosition()-10, s1.getYPosition()-10);
-                    s1.setImage("/harry_potter/Spells/PersonFacingRight.gif");
-                    spell1.setImage("/harry_potter/Spells/Lumos.gif");
-                    spell1.setVelocity(150, 0);
-                } 
-                if (input.contains("SHIFT")){
-                    in.add("SHIFT");
-                    spell2.setPosition(s2.getXPosition()-10, s2.getYPosition()-10);
-                    s2.setImage("/harry_potter/Spells/PersonFacingLeft.gif");
-                    spell2.setImage("/harry_potter/Spells/Lumos.gif");
-                    spell2.setVelocity(-150, 0);
-                } */ 
                 s1.update(elapsedTime);
                 s2.update(elapsedTime);
                 spell1.update(elapsedTime);
@@ -284,14 +274,22 @@ public class Duel_final extends Application implements Runnable {
                 {
                     sp.setImage("/harry_potter/Spells/Explosion.gif");
                     sp.setPosition(spell1.getXPosition(), 300);
-                    sp.update(elapsedTime);   
+                    sp.update(elapsedTime);
+                    mediaPlayer1.stop();
+                    mediaPlayer2.stop();
+                    mediaPlayer3.stop();
+                    mediaPlayer4.stop();
+                    mediaPlayer5.stop();
+                    mediaPlayer6.stop();
+                    
                 }
                 //render
                 gc.clearRect(0, 0, 1366,768);
                 s1.render(gc);
                 s2.render(gc);
                 
-                if(spell2.getXPosition()-spell1.getXPosition()>=0){                    
+                if(spell2.getXPosition()-spell1.getXPosition()>=0){ 
+                    //mediaPlayer.play();
                     spell1.render(gc);
                     spell2.render(gc);
                 }
@@ -300,26 +298,34 @@ public class Duel_final extends Application implements Runnable {
                     //if(spell1.getXPosition())
                     spell1.render(gc);
                     if(spell1.intersects(s2)){
+                        
+                            //mediaPlayer.stop();
                         if(spell1.intersects(spell2)){
                             spell2.setVelocity(0,0);
                         }
-                        s2.setImage("/harry_potter/Spells/damage.gif");
+                        if(duel.bot.health>0)
+                            s2.setImage("/harry_potter/Spells/damage.gif");
+                         else{
+                             s2.setImage("/harry_potter/Spells/death.gif");
+                         }
                     }
                 }
                                 
                 if((counters)&&(spell2.getXPosition()>=s1.getXPosition()+10)){
                     spell2.render(gc); 
                      if(spell2.intersects(s1)){
+                         
+                             //mediaPlayer.stop();
                          if(spell2.intersects(spell1)){
                             spell1.setVelocity(0,0);
                         }
-                        s1.setImage("/harry_potter/Spells/damage_flip.gif");
+                         if(duel.player.getCurrentHealth()>0)
+                            s1.setImage("/harry_potter/Spells/damage_flip.gif");
+                         else{
+                             s1.setImage("/harry_potter/Spells/death_flip.gif");
+                         }
                     }
                 }
-                
-                
-
-                
                 
                 //else
                 sp.render(gc);
@@ -330,29 +336,31 @@ public class Duel_final extends Application implements Runnable {
                 gc.fillText( playerhealth, 50, 36 );
                 gc.strokeText( playerhealth, 50, 36 );
                 
+                
                 String bothealth = "Bot Health: " + (duel.bot.health);
                 gc.fillText( bothealth, 1100, 36 );
                 gc.strokeText( bothealth, 1100, 36 );
                 
                 
                 
-                gc.fillText(bspell,1100,72);
-                gc.strokeText(bspell,1100,72);
+                //gc.fillText(bspell,1100,72);
+                //gc.strokeText(bspell,1100,72);
                
-                gc.fillText(pspell,100,72);
-                gc.strokeText(pspell,100,72);
+                //gc.fillText(pspell,100,72);
+                //gc.strokeText(pspell,100,72);
                 if(duel.bot.health<=0){
                     String result = "You Win ";
-                    gc.fillText( result, 500, 36 );
-                    gc.strokeText( result, 500, 36 );
+                    mediaPlayer.play();
+                    gc.fillText( result, 600, 370 );
+                    gc.strokeText( result, 600, 370 );
+                    
 		}
 		if(duel.player.getCurrentHealth()<=0){
-			String result = "You Loose";
-                    gc.fillText( result, 500, 36 );
-                    gc.strokeText( result, 500, 36 );
+                    String result = "You Loose";
+                    mediaPlayer.play();
+                    gc.fillText( result, 600, 370 );
+                    gc.strokeText( result, 600, 370 );
                 }
-                
-                
                
             }
         }.start();

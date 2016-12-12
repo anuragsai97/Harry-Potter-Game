@@ -26,15 +26,18 @@ public class Spell {
 		final ArrayList<Spell> spellsLevel2 = new ArrayList<>();
 		
 		//level 0 spells
-		spellsLevel0.add(new Spell("", 0, 0, 0));
-		spellsLevel0.add(new Spell("stupefy", 20, 25, 0));
-		spellsLevel0.add(new Spell("confringo", 25, 25, 0));
+		//spellsLevel0.add(new Spell("", 0, 0, 0));
+		spellsLevel0.add(new Spell("stupefy", 20, 25, 1));
+                spellsLevel0.add(new Spell("stupefied", 20, 25, 1));
+		spellsLevel0.add(new Spell("confringo", 25, 25, 1));
 		//level 1 spells
-		spellsLevel1.add(new Spell("diffindo", 30, 30, 1));
-		spellsLevel1.add(new Spell("expelliarmus", 35, 35, 1));
+		spellsLevel1.add(new Spell("diffindo", 30, 30, 2));
+                spellsLevel1.add(new Spell("defendo", 30, 30, 2));
+                spellsLevel1.add(new Spell("Defender", 30, 30, 2));
+		spellsLevel1.add(new Spell("expelliarmus", 35, 35, 2));
 		//level 2 spells
-		spellsLevel2.add(new Spell("crucio", 40, 40, 2));
-		spellsLevel2.add(new Spell("reducto", 45, 45, 2));
+		spellsLevel2.add(new Spell("crucio", 40, 40, 3));
+		spellsLevel2.add(new Spell("reducto", 45, 45, 3));
 		
 		//add to list
 		spells.add(spellsLevel0);

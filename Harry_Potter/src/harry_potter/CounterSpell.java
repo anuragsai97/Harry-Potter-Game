@@ -16,17 +16,17 @@ public class CounterSpell {
 		//counterSpells.add(new CounterSpell("Levicorpus", Spell.spells.get(1), 10));
 		
 		//level 0
-		counterSpells.add(new CounterSpell("", Spell.spells.get(0).get(0), 0));
+		//counterSpells.add(new CounterSpell("", Spell.spells.get(0).get(0), 0));
+		counterSpells.add(new CounterSpell("sectumsempra", Spell.spells.get(0).get(0), 10));
 		counterSpells.add(new CounterSpell("stupefy", Spell.spells.get(0).get(1), 10));
-		counterSpells.add(new CounterSpell("confringo", Spell.spells.get(0).get(2), 10));
 		
 		//level 1
-		counterSpells.add(new CounterSpell("diffindo", Spell.spells.get(1).get(0), 10));
-		counterSpells.add(new CounterSpell("expelliarmus", Spell.spells.get(1).get(1), 10));
+		counterSpells.add(new CounterSpell("expelliarmus", Spell.spells.get(1).get(0), 10));
+		counterSpells.add(new CounterSpell("diffindo", Spell.spells.get(1).get(1), 10));
 		
 		//level 2
-		counterSpells.add(new CounterSpell("crucio", Spell.spells.get(2).get(0), 10));
-		counterSpells.add(new CounterSpell("reducto", Spell.spells.get(2).get(1), 10));
+		counterSpells.add(new CounterSpell("reducto", Spell.spells.get(2).get(0), 10));
+		counterSpells.add(new CounterSpell("crucio", Spell.spells.get(2).get(1), 10));
 		
 		/*
 		//level 1 spells

@@ -88,6 +88,7 @@ public class Test extends Application implements Runnable{
                 */
                 
                 
+                
         
 
         theScene.setOnKeyReleased(

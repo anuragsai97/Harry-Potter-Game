@@ -12,7 +12,7 @@ public class Duel {
 	}
 	
 	public void  fu() throws IOException{
-		Duel duel = new Duel(new Player(), new ComputerBot(100, 10));
+		Duel duel = new Duel(new Player(), new ComputerBot(100, 3));
 		Spell spell; 
 		CounterSpell counterSpell;
 		boolean counters;
