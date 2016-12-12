@@ -15,6 +15,8 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 /**
@@ -26,7 +28,7 @@ public class Duel_final extends Application implements Runnable {
     //ArrayList<String> kks = new ArrayList<>();
     Scanner sc=new Scanner(System.in);
     KnockKnockServer k=new KnockKnockServer();
-    
+    String pspell,bspell;
      Duel duel = new Duel(new Player(), new ComputerBot(100, 1));
 		Spell spell; 
 		CounterSpell counterSpell;
@@ -122,12 +124,13 @@ public class Duel_final extends Application implements Runnable {
                 }
             });
         
-                Thread th=new Thread(k);
+                /*Thread th=new Thread(k);
                 th.start();
                 while(kks_t.size()==0){
                     kks_t = k.getstring();
                     //System.out.println(kks_t);
-                }
+                }*/
+                kks_t.add("diffindo");
         
         //in.add(kks_t);
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -171,6 +174,7 @@ public class Duel_final extends Application implements Runnable {
                         if((kks_t.contains("reducto"))||(kks_t.contains("crucio"))||(kks_t.contains("diffindo"))||(kks_t.contains("expelliarmus"))||(kks_t.contains("stupefy"))||kks_t.contains("confringo")){
                             //players turn
                             spell = duel.player.performSpell(kks_t.get(0));
+                            pspell=kks_t.get(0);
                             counters = duel.bot.canCounter(spell);
                             if(!counters){
                             	duel.bot.health-=spell.damage;
@@ -180,19 +184,22 @@ public class Duel_final extends Application implements Runnable {
                             }
                             //get opponent's counter spell
                             counterSpell = duel.bot.getCounterSpell(counters, spell);
+                            bspell=counterSpell.name;
                             //counterSpell=duel.bot.performSpell();
                             System.out.println("Opponent used " + counterSpell.name );
                             //
                             
                             spell1.setPosition(s1.getXPosition()-10, s1.getYPosition()-10);
                             player_spell_setter(spell.name);
-                            spell1.setVelocity(150, 0);
+                            s1.setImage("/harry_potter/Spells/PersonFacingRight.gif");
+                            spell1.setVelocity(250, 0);
                             kks_t.clear();
                             spell2.setPosition(s2.getXPosition()-10, s2.getYPosition()-10);
                             //s2.setImage("/harry_potter/Spells/PersonFacingLeft.gif");
                             spell_setter(counterSpell.name);
+                            s2.setImage("/harry_potter/Spells/PersonFacingLeft.gif");
                             //spell2.setImage("/harry_potter/Spells/sectum sempra.gif");
-                            spell2.setVelocity(-150, 0);
+                            spell2.setVelocity(-250, 0);
                         }
 			//display stats
 			//displayStats(duel);
@@ -289,7 +296,7 @@ public class Duel_final extends Application implements Runnable {
                     spell2.render(gc);
                 }
 
-                if(!counters){
+                if((!counters)&&(spell1.getXPosition()<=s2.getXPosition()-10)){
                     //if(spell1.getXPosition())
                     spell1.render(gc);
                     if(spell1.intersects(s2)){
@@ -299,19 +306,15 @@ public class Duel_final extends Application implements Runnable {
                         s2.setImage("/harry_potter/Spells/damage.gif");
                     }
                 }
-                
-                
-                
-                if(counters){
+                                
+                if((counters)&&(spell2.getXPosition()>=s1.getXPosition()+10)){
                     spell2.render(gc); 
-                     if(spell1.intersects(s1)){
-                         if(spell1.intersects(spell2)){
+                     if(spell2.intersects(s1)){
+                         if(spell2.intersects(spell1)){
                             spell1.setVelocity(0,0);
                         }
-                         //spell1.setVelocity(0,0);
                         s1.setImage("/harry_potter/Spells/damage_flip.gif");
                     }
-
                 }
                 
                 
@@ -321,14 +324,35 @@ public class Duel_final extends Application implements Runnable {
                 //else
                 sp.render(gc);
                 
-                String pointsText = "Player Health: " + (duel.player.getCurrentHealth());
-                gc.fillText( pointsText, 30, 36 );
-                gc.strokeText( pointsText, 30, 36 );
+                String playerhealth = "Player Health: " + (duel.player.getCurrentHealth());
+                Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 20 );
+                gc.setFont( theFont );
+                gc.fillText( playerhealth, 50, 36 );
+                gc.strokeText( playerhealth, 50, 36 );
                 
                 String bothealth = "Bot Health: " + (duel.bot.health);
                 gc.fillText( bothealth, 1100, 36 );
                 gc.strokeText( bothealth, 1100, 36 );
+                
+                
+                
+                gc.fillText(bspell,1100,72);
+                gc.strokeText(bspell,1100,72);
                
+                gc.fillText(pspell,100,72);
+                gc.strokeText(pspell,100,72);
+                if(duel.bot.health<=0){
+                    String result = "You Win ";
+                    gc.fillText( result, 500, 36 );
+                    gc.strokeText( result, 500, 36 );
+		}
+		if(duel.player.getCurrentHealth()<=0){
+			String result = "You Loose";
+                    gc.fillText( result, 500, 36 );
+                    gc.strokeText( result, 500, 36 );
+                }
+                
+                
                
             }
         }.start();

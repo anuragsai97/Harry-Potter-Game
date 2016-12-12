@@ -26,7 +26,7 @@ public class Spell {
 		final ArrayList<Spell> spellsLevel2 = new ArrayList<>();
 		
 		//level 0 spells
-		//spellsLevel0.add(new Spell("", 0, 0, 0));
+		spellsLevel0.add(new Spell("", 0, 0, 0));
 		spellsLevel0.add(new Spell("stupefy", 20, 25, 0));
 		spellsLevel0.add(new Spell("confringo", 25, 25, 0));
 		//level 1 spells
