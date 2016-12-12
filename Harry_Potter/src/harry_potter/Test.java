@@ -5,6 +5,7 @@
  */
 package harry_potter;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javafx.animation.AnimationTimer;
@@ -19,6 +20,8 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import java.util.Scanner;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -40,7 +43,7 @@ public class Test extends Application implements Runnable{
     
     int count=0;
     ArrayList<String> d;
-    tlevel1 t=new tlevel1();
+    //tlevel1 t=new tlevel1();
     ArrayList<String> kks_t = new ArrayList<>();
     Scanner sc=new Scanner(System.in);
     KnockKnockServer k=new KnockKnockServer();
@@ -133,15 +136,24 @@ public class Test extends Application implements Runnable{
         Sprite dumbledore=new Sprite();
         Sprite hagrid=new Sprite();
         Sprite balloon=new Sprite();
+        Sprite final_balloon=new Sprite();
         
+       Media media = new Media(new File("C:\\Users\\PDN SRNIVAS\\Documents\\NetBeansProjects\\Harry_Potter\\src\\harry_potter\\Spell sounds\\leviosa.mp3").toURI().toString());
+       MediaPlayer mediaPlayer = new MediaPlayer(media);
+       Media media2 = new Media(new File("C:\\Users\\PDN SRNIVAS\\Documents\\NetBeansProjects\\Harry_Potter\\src\\harry_potter\\Harry Potter Theme Song.mp3").toURI().toString());
+       MediaPlayer med=new MediaPlayer(media2);
+       med.setAutoPlay(true);
+       Media media3 = new Media(new File("C:\\Users\\PDN SRNIVAS\\Documents\\NetBeansProjects\\Harry_Potter\\src\\harry_potter\\Spell sounds\\Well done Harry.mp3").toURI().toString());
+       MediaPlayer med2=new MediaPlayer(media3);
        
-        
+       
         hagrid.setPosition(0,300);
         balloon.setImage("/harry_potter/Introimages/textbaloonL1.png");
-        
+        final_balloon.setImage("/harry_potter/Introimages/finalbaloon.png");
         text.setPosition(1100,0);
         dumbledore.setPosition(1000, 150);
         balloon.setPosition(20, 120);
+        final_balloon.setPosition(20,120);
          hagrid.setImage("/harry_potter/Introimages/Hagridsprite1.png");
         dumbledore.setImage("/harry_potter/Introimages/Dumbledore.jpg");
          text.setImage("/harry_potter/Introimages/Text_Balloon.png");
@@ -225,7 +237,7 @@ public class Test extends Application implements Runnable{
                 //|
                // 
                 
-                if((kks_t.contains("Wingardium Leviosa")|kks_t.contains("stupefy")||kks_t.contains("reducto")))
+                if((kks_t.contains("Wingardium Leviosa")|kks_t.contains("stupefy")||kks_t.contains("reducto"))||kks_t.contains("confringo")||kks_t.contains("stupefied"))
                 { 
                     
                     if(in.get(in.size()-1)=="DOWN"){
@@ -235,13 +247,22 @@ public class Test extends Application implements Runnable{
                         harry_potter.setImage("/harry_potter/Movement/u1.png");
                     }
                     if(in.get(in.size()-1)=="LEFT"){                      
-                        harry_potter.setImage("/harry_potter/Spells/Spell.gif");
+                        //harry_potter.setImage("/harry_potter/Spells/Spell.gif");
                         
-                         if(kks_t.contains("Stupefy")|kks_t.contains("confringo")|kks_t.contains("reducto")){
-                    spell.setPosition(harry_potter.getXPosition()-10, harry_potter.getYPosition()-10);
-                    harry_potter.setImage("/harry_potter/Spells/Spell_flip.gif");
-                   spell.setImage("/harry_potter/Spells/Stupefy.gif");
-                    spell.setVelocity(-150, 0);
+                        if(kks_t.contains("Wingardium Leviosa")||kks_t.contains("Win Guardian Leviosa")){
+                            harry_potter.setImage("/harry_potter/Spells/Spell.gif");
+                           // med.pause();
+                            mediaPlayer.play();
+                            
+                            kks_t.clear();
+                }     
+                       // med.play();
+                        
+                         if(kks_t.contains("stupefy")|kks_t.contains("confringo")|kks_t.contains("reducto")||kks_t.contains("stupefied")){
+                         spell.setPosition(harry_potter.getXPosition()-10, harry_potter.getYPosition()-10);
+                        harry_potter.setImage("/harry_potter/Spells/Spell.gif");
+                         spell.setImage("/harry_potter/Spells/Stupefy.gif");
+                         spell.setVelocity(-150, 0);
                       // s=kks_t.get(0);
                        kks_t.clear();
                         i=i+1;
@@ -257,7 +278,13 @@ public class Test extends Application implements Runnable{
                     if(in.get(in.size()-1)=="RIGHT"){
                         harry_potter.setImage("/harry_potter/Spells/Spell_flip.gif");
                         
-                        if(kks_t.contains("Stupefy")|kks_t.contains("confringo")|kks_t.contains("reducto")){
+                        if(kks_t.contains("Wingardium Leviosa")||kks_t.contains("Win Guardian Leviosa")){
+                             harry_potter.setImage("/harry_potter/Spells/Spell_flip.gif");
+                    mediaPlayer.play();
+                    kks_t.clear();
+                }     
+                        
+                        if(kks_t.contains("stupefy")|kks_t.contains("confringo")|kks_t.contains("reducto")||kks_t.contains("stupefied")){
                     spell.setPosition(harry_potter.getXPosition()-10, harry_potter.getYPosition()-10);
                     harry_potter.setImage("/harry_potter/Spells/Spell_flip.gif");
                    spell.setImage("/harry_potter/Spells/Stupefy.gif");
@@ -276,12 +303,10 @@ public class Test extends Application implements Runnable{
                         //count(s);
                          i=i+1;
                          System.out.println("hi");
-                if(i==3)
-               {
-                //System.out.println("heyya");
-              }
+                
                         
-                        
+                   
+                
                     }
                     
                 
@@ -325,16 +350,6 @@ public class Test extends Application implements Runnable{
                 spell.update(elapsedTime);
                 // collision detection
                 
-                Iterator<Sprite> spellsIter = spellsList.iterator();
-                while ( spellsIter.hasNext() )
-                {
-                    Sprite spells = spellsIter.next();
-                    if ( harry_potter.intersects(spells))
-                    {
-                        spellsIter.remove();
-                        score.value++;
-                    }
-                }
                 
                 // render
                 
@@ -346,12 +361,13 @@ public class Test extends Application implements Runnable{
                  //text.render(gc);
                 spell.render( gc );
                  
-                for (Sprite spells : spellsList )
-                    spells.render( gc );
+                if(i==3)
+                {
+                    med2.play();
+                    final_balloon.render(gc);
+                        //System.out.println("heyya");
+                }
                 
-                String pointsText = "Score: " + (100 * score.value);
-                gc.fillText( pointsText, 1300, 36 );
-                gc.strokeText( pointsText, 1300, 36 );
                 
                 if(harry_potter.intersects(dumbledore))
                         text.render(gc);
@@ -383,7 +399,7 @@ public class Test extends Application implements Runnable{
     public void setdetails(user p)
     {
         //count=count+1;
-      pl=p;
+        pl=p;
         //System.out.println("hi");
         System.out.println(p.name);
     }

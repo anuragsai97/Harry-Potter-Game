@@ -23,7 +23,7 @@ public class ComputerBot{
 		//int x = (int)(Math.random()*(level*(2-s.level)));
                 //int x=(int)(Math.random()*5);
                 //int x=5;
-                    int x=(int)(Math.random()*3);
+                    int x=(int)(Math.random()*1);
 		if(x>2)
 			return 2;
 		return x;

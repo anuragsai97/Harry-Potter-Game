@@ -330,14 +330,29 @@ public class Duel_final extends Application implements Runnable {
                 //else
                 sp.render(gc);
                 
-                String playerhealth = "Player Health: " + (duel.player.getCurrentHealth());
                 Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 20 );
                 gc.setFont( theFont );
+                
+                String playerhealth="Player Health: ";
+                if(duel.player.getCurrentHealth()>0){
+                    playerhealth = "Player Health: " + (duel.player.getCurrentHealth());
+                }
+                if(duel.player.getCurrentHealth()<=0){
+                    playerhealth="Player Health: " + 0;
+                }
                 gc.fillText( playerhealth, 50, 36 );
                 gc.strokeText( playerhealth, 50, 36 );
                 
                 
-                String bothealth = "Bot Health: " + (duel.bot.health);
+                
+                
+                String bothealth = "Bot Health:";
+                if(duel.bot.health>0){
+                    bothealth = "Bot Health: " + (duel.bot.health);
+                }
+                if(duel.bot.health<=0){
+                    bothealth= "Bot Health: " +0;
+                }
                 gc.fillText( bothealth, 1100, 36 );
                 gc.strokeText( bothealth, 1100, 36 );
                 
