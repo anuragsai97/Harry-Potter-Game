@@ -36,7 +36,7 @@ public class Spell {
                 spellsLevel1.add(new Spell("Defender", 30, 30, 2));
 		spellsLevel1.add(new Spell("expelliarmus", 35, 35, 2));
 		//level 2 spells
-		spellsLevel2.add(new Spell("crucio", 100, 40, 3));
+		spellsLevel2.add(new Spell("crucio", 40, 40, 3));
 		spellsLevel2.add(new Spell("reducto", 45, 45, 3));
 		
 		//add to list

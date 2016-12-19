@@ -145,13 +145,13 @@ public class Duel_final extends Application implements Runnable {
                 }
             });
         
-                /*Thread th=new Thread(k);
+                Thread th=new Thread(k);
                 th.start();
                 while(kks_t.size()==0){
                     kks_t = k.getstring();
                     //System.out.println(kks_t);
-                }*/
-                kks_t.add("crucio");
+                }
+                //kks_t.add("crucio");
         
         //in.add(kks_t);
         GraphicsContext gc = canvas.getGraphicsContext2D();

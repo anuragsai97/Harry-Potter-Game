@@ -108,8 +108,6 @@ public class Test extends Application implements Runnable{
                 }
               //  */
                 
-               //kks_t.add("reducto");
-               //kks_t.add("Wingardium Leviosa");
                 
         
 
