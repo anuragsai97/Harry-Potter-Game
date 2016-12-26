@@ -7,10 +7,8 @@ package harry_potter;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -18,18 +16,21 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import java.util.Scanner;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.stage.Stage;
+import static javafx.application.Application.launch;
+
 /**
  *
  * @author ANURAG
  */
-public class Test extends Application implements Runnable{
+public class Training_final extends Application implements Runnable{
     
     user pl;
     
-    /*Test(Player p)
+    /*Training_final(Player p)
     {
         this.p=p;
         
@@ -42,7 +43,7 @@ public class Test extends Application implements Runnable{
     ArrayList<String> kks_t = new ArrayList<>();
     Scanner sc=new Scanner(System.in);
     KnockKnockServer k=new KnockKnockServer();
-   // Test t=new Test();
+   // Training_final t=new Training_final();
    // Thread test = new Thread(t);
     //Training tr=new Training();
     int i=0;
@@ -103,6 +104,8 @@ public class Test extends Application implements Runnable{
                 }
               //  */
                 
+               //kks_t.add("reducto");
+               //kks_t.add("Wingardium Leviosa");
                 
         
 
@@ -133,23 +136,23 @@ public class Test extends Application implements Runnable{
         Sprite balloon=new Sprite();
         Sprite final_balloon=new Sprite();
         
-       Media media = new Media(new File("Spell sounds\\leviosa.mp3").toURI().toString());
+       Media media = new Media(new File("C:\\Users\\PDN SRNIVAS\\Documents\\NetBeansProjects\\Harry_Potter\\src\\harry_potter\\Spell sounds\\leviosa.mp3").toURI().toString());
        MediaPlayer mediaPlayer = new MediaPlayer(media);
-       Media media2 = new Media(new File("Harry Potter Theme Song.mp3").toURI().toString());
+       Media media2 = new Media(new File("C:\\Users\\PDN SRNIVAS\\Documents\\NetBeansProjects\\Harry_Potter\\src\\harry_potter\\Harry Potter Theme Song.mp3").toURI().toString());
        MediaPlayer med=new MediaPlayer(media2);
        med.setAutoPlay(true);
-       Media media3 = new Media(new File("Spell sounds\\Well done Harry.mp3").toURI().toString());
+       Media media3 = new Media(new File("C:\\Users\\PDN SRNIVAS\\Documents\\NetBeansProjects\\Harry_Potter\\src\\harry_potter\\Spell sounds\\Well done Harry.mp3").toURI().toString());
        MediaPlayer med2=new MediaPlayer(media3);
        
        
         hagrid.setPosition(0,300);
-        balloon.setImage("Introimages/textbaloonL1.png");
-        final_balloon.setImage("Introimages/finalbaloon.png");
+        balloon.setImage("/harry_potter/Introimages/textbaloonL1.png");
+        final_balloon.setImage("/harry_potter/Introimages/finalbaloon.png");
         text.setPosition(1100,0);
         dumbledore.setPosition(1000, 150);
         balloon.setPosition(20, 120);
         final_balloon.setPosition(20,120);
-         hagrid.setImage("Introimages/Hagridsprite1.png");
+         hagrid.setImage("/harry_potter/Introimages/Hagridsprite1.png");
         dumbledore.setImage("/harry_potter/Introimages/Dumbledore.jpg");
          text.setImage("/harry_potter/Introimages/Text_Balloon.png");
         
